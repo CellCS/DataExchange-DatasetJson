@@ -1,0 +1,83 @@
+version: "3.8"
+services:
+  database:
+    image: mysql:latest 
+    container_name: dataexchange-mysql
+    restart: always
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '1'
+    ports:
+      - 3306:3306
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      MYSQL_DATABASE: backend_db 
+      MYSQL_USER: datasetdb
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+    secrets:
+      - db_root_password
+      - db_password
+    healthcheck:
+      test: mysql -u datasetdb -p`cat /run/secrets/db_password` backend_db -e 'show tables;' -N -s | grep stores_table || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 45s
+    networks:
+      - udnet
+    tty: true
+  backend:
+    image: cellcs/dataexchangews:latest
+    pull_policy: always
+    container_name: dataexchangews
+    restart: always
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.5'
+    ports:
+      - 4444:4444
+    secrets:
+      - source: main_secret
+        target: /app/main.yaml
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    healthcheck:
+      test: curl -u `cat /app/main.yaml | grep 'dataexchangews:' | tr -d ' '` --fail localhost:4444 || exit 1
+      interval: 60s
+      retries: 3
+      start_period: 30s
+    networks:
+      - udnet
+    depends_on:
+      database:
+        condition: service_healthy
+    tty: true
+#  backend-proxy:
+#    image: nginx
+#    container_name: backend_nginx
+#    ports:
+#      - 4433:4433
+#    volumes:
+secrets:
+  main_secret:
+    file: backend/dataexchange-ws/main.yaml
+  db_password:
+    file: .db_password.txt
+  db_root_password:
+    file: .db_root_password.txt
+volumes:
+  db_data:
+networks:
+  udnet:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: 'false'

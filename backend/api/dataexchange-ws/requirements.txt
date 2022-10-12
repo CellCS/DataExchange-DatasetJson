@@ -1,0 +1,8 @@
+fastapi[all]
+uvicorn
+SQLAlchemy
+pymysql
+async-generator
+async-exit-stack
+cryptography
+pyyaml
