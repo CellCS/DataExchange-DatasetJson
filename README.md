@@ -20,3 +20,10 @@ Current files are examples that provided by [cdisc-org DataExchange-DatasetJson]
 **localtest** folder create one mysql container in local machine.
 
 other docker-compose file and dockerfile will deploy into real env. 
+
+
+
+#### Testing
+
+Local testing:
+<img width="787" alt="image" src="https://user-images.githubusercontent.com/16886624/196528498-7c3b0a41-9a3d-42ba-b5a2-f87ab181228a.png">
