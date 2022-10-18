@@ -98,10 +98,14 @@ def authenticate_test(auth: BasicAuth = Depends(basic_auth)):
             headers={"WWW-Authenticate": "Basic"},
             )
 
-@app.get("/")
-async def login_basic(isAuth: str = Depends(authenticate_test)):
-    print(isAuth)
-    return {"status": 200,'data':'DataExchange DatasetJson web service'}
+@app.get("/broadcast")
+async def root():
+    return {"message": "Welcome to DataExchange-DatasetJson Hackathon 2022"}
+
+# @app.get("/")
+# async def login_basic(isAuth: str = Depends(authenticate_test)):
+#     print(isAuth)
+#     return {"status": 200,'data':'DataExchange DatasetJson web service'}
     
 
 @app.get('/about')

@@ -2,12 +2,12 @@ api:
   host: 0.0.0.0 
   port: 4444
   creds:
-    dataexchangews: wspassword 
+    dataexchangews: WcJBFZw5eRXP8BVDQZqD
 mysql:
   dialect: mysql
   dbapi: pymysql
-  host: database 
+  host: "localhost" 
   port: 3306
   user: datasetdb
-  pass: wsdbpassword 
+  pass: root
   database: backend_db
