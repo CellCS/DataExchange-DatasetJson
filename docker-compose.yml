@@ -61,12 +61,6 @@ services:
       database:
         condition: service_healthy
     tty: true
-#  backend-proxy:
-#    image: nginx
-#    container_name: backend_nginx
-#    ports:
-#      - 4433:4433
-#    volumes:
 secrets:
   main_secret:
     file: backend/dataexchange-ws/main.yaml
