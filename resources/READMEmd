@@ -1,0 +1,24 @@
+# Dataset-JSON Hackathon Home
+
+Open-Source Tools using Dataset-JSON
+Our primary objective for the Hackathon is to develop open-source tools that make it easier to start using Dataset-JSON. We hope to see tools that convert Dataset-JSON to other common formats as well as convert other formats to Dataset-JSON, such as:
+SAS v5 XPORT & SAS datasets
+R dataframes
+Python Pandas dataframes
+
+Additional Open-Source Tools
+CDISC is also interested in seeing what other tools may be developed as there is no restriction on what tools you work on. Examples of other tools could include:
+Dataset-JSON browser or viewer
+Dataset-JSON tools that work in combination with Define-XML
+A RESTful API for Dataset-JSON
+Creating new projects or extending existing projects to use Dataset-JSON are both acceptable options.
+
+## References
+
+[Dataset-JSON Hackathon Home](https://wiki.cdisc.org/display/DSJSONHACK/Introduction)
+
+[Dataset-JSON Virtual Hackathon Information Packet](https://wiki.cdisc.org/display/DSJSONHACK/Dataset-JSON+Virtual+Hackathon+Information+Packet)
+
+
+[Dataset-JSON](https://github.com/cdisc-org/DataExchange-DatasetJson)
+
