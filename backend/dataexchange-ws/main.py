@@ -112,9 +112,28 @@ async def root():
 async def about(isAuth: str = Depends(authenticate_test)):
     return {'data':'DataExchange DatasetJson'}
 
+@app.get('/tests/{fullname}')
+async def getExampleFile(fullname:str = '', db: Session=Depends(get_db)):
+    responsecontent = db.query(model.ExampleFilesTable).filter(model.ExampleFilesTable.FileFullName == fullname).all()
+    db.close()
+    results_jsn = lib_fun.modelToJson(responsecontent)
+    return results_jsn
+
+
+@app.get('/testfile/')
+async def getExampleFile(filename: str = '', format: str = '', db: Session=Depends(get_db)):
+    if filename=="" or format=="":
+        results = {"error": "File name and format are required."}
+        return results
+    fullname = filename + "."+format
+    responsecontent = db.query(model.ExampleFilesTable).filter(model.ExampleFilesTable.FileFullName == fullname).all()
+    db.close()
+    results_jsn = lib_fun.modelToJson(responsecontent)
+    return results_jsn
+
 @app.get('/examplefile/{fullname}')
 async def getExampleFile(isAuth: str = Depends(authenticate_test), fullname:str = '', db: Session=Depends(get_db)):
-    responsecontent = db.query(model.ExampleFilesTable).filter(model.ExampleFilesTable.file_full_name == fullname).all()
+    responsecontent = db.query(model.ExampleFilesTable).filter(model.ExampleFilesTable.FileFullName == fullname).all()
     db.close()
     results_jsn = lib_fun.modelToJson(responsecontent)
     return results_jsn
@@ -125,7 +144,7 @@ async def getExampleFile(isAuth: str = Depends(authenticate_test), q: List[str] 
         results = {"error": "File name and format are required."}
         return results
     fullname = q[0] + q[1]
-    responsecontent = db.query(model.ExampleFilesTable).filter(model.ExampleFilesTable.file_full_name == fullname).all()
+    responsecontent = db.query(model.ExampleFilesTable).filter(model.ExampleFilesTable.FileFullName == fullname).all()
     db.close()
     results_jsn = lib_fun.modelToJson(responsecontent)
     return results_jsn
