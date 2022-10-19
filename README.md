@@ -44,5 +44,6 @@ If API need authorization:
 
 ### Arch
 
-<img width="550" alt="Screen Shot 2022-10-18 at 7 16 25 PM" src="https://user-images.githubusercontent.com/16886624/196576330-2cff503f-0ca2-49ec-996b-2e8a653029c0.png">
+<img width="548" alt="Screen Shot 2022-10-18 at 7 21 41 PM" src="https://user-images.githubusercontent.com/16886624/196576445-5e0144e8-2fa5-4b2e-a6ae-624848181105.png">
+
 
