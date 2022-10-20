@@ -37,9 +37,17 @@ GET one dataset by using file name and file format
 <img width="739" alt="Screen Shot 2022-10-18 at 8 50 11 PM" src="https://user-images.githubusercontent.com/16886624/196571897-f92f78bf-5bc7-43b2-acf9-dfe7a6b84963.png">
 
 
-If API need authorization:
+If turn on API authorization:
 
 <img width="612" alt="Screen Shot 2022-10-18 at 8 15 19 PM" src="https://user-images.githubusercontent.com/16886624/196568339-e990c479-dd22-4657-b7de-3dfbb6807d89.png">
+
+GET Format
+
+![format](https://user-images.githubusercontent.com/16886624/196831248-1d537330-095b-4032-9f62-010c6e7bbcc6.png)
+
+GET File Datasets
+
+![examplelist](https://user-images.githubusercontent.com/16886624/196831283-ec61fa16-072b-4bc7-a23c-36a4387d3146.png)
 
 
 ### Arch
