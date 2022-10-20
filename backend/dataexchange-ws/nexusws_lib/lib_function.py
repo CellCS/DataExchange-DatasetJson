@@ -16,3 +16,12 @@ def modelToJson(modelObjs):
     all_jsn_data = {"data":all_data}
         
     return all_jsn_data
+
+def colToJson(modelObjs, key):
+    all_data = []
+    for modelObj in modelObjs:
+        # modelObj.__dict__
+        all_data.append(getattr(modelObj, key))
+    all_jsn_data = {"count":len(modelObjs), "data":all_data}
+        
+    return all_jsn_data

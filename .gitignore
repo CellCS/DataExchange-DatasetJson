@@ -4,3 +4,4 @@
 .db_password.txt
 .db_root_password.txt
 .web_password.txt
+*.sql

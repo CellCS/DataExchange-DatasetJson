@@ -70,3 +70,6 @@ mysql> describe examples_table;
 +----------------+--------------+------+-----+---------+----------------+
 9 rows in set (0.01 sec)
 
+### dump mysql 
+
+docker exec backend-mysql /usr/bin/mysqldump -u root --password=root backend_db > examples.sql

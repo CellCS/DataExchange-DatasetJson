@@ -119,6 +119,20 @@ async def getExampleFile(fullname:str = '', db: Session=Depends(get_db)):
     results_jsn = lib_fun.modelToJson(responsecontent)
     return results_jsn
 
+@app.get('/examplelist/')
+async def getExampleFile(filename: str = '', format: str = '',db: Session=Depends(get_db)):
+    if filename=='' and format=='':
+        responsecontent = db.query(model.ExampleFilesTable).order_by(model.ExampleFilesTable.FileFullName).all()
+    elif filename!='' and format=='':
+        responsecontent = db.query(model.ExampleFilesTable).filter(model.ExampleFilesTable.FileName == filename).order_by(model.ExampleFilesTable.FileFullName).all()
+    elif filename=='' and format!='':\
+        responsecontent = db.query(model.ExampleFilesTable).filter(model.ExampleFilesTable.FileFormat == format).order_by(model.ExampleFilesTable.FileFullName).all()
+    else:
+        return {'count':0, 'data':[]}
+    db.close()
+    results_jsn = lib_fun.colToJson(responsecontent,"FileFullName")
+    return results_jsn
+
 
 @app.get('/testfile/')
 async def getExampleFile(filename: str = '', format: str = '', db: Session=Depends(get_db)):
